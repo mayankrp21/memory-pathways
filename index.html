@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A synthetic, self-contained study of memory pathways, user experience, and return in conversational AI.">
+  <title>Memory Pathways — an exploration of conversational AI</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data/simulate.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#top"><span class="brand-glyph">M</span><span><b>Memory Pathways</b><small>COGNITIVE SYSTEMS LAB</small></span></a>
+    <div class="side-label">EXPLORE</div>
+    <nav><a href="#start" class="nav-link active"><span>01</span> Start here</a><a href="#pathways" class="nav-link"><span>02</span> Memory pathways</a><a href="#opportunities" class="nav-link"><span>03</span> Opportunity rules</a><a href="#walkthrough" class="nav-link"><span>04</span> Example journey</a><a href="#experience" class="nav-link"><span>05</span> User experience</a><a href="#return" class="nav-link"><span>06</span> Return & bias</a><a href="#method" class="nav-link"><span>07</span> Method & next steps</a></nav>
+    <div class="side-bottom"><span class="live-indicator"></span> LOCAL SIMULATION<p>Generated examples only.<br>No live data connections.</p></div>
+  </aside>
+  <main id="top">
+    <header class="topbar"><div class="breadcrumbs">Research <span>/</span> <b>Memory pathways</b></div><div class="top-meta"><span class="synthetic-pill"><i></i> SYNTHETIC STUDY</span><span class="profile-mark">MP</span></div></header>
+    <div class="page-wrap">
+      <section class="hero" id="start">
+        <div class="hero-copy"><div class="overline">MEMORY · EXPERIENCE · RETURN</div><h1>When an assistant remembers,<br>what changes for the user?</h1><p>Follow memory from a relevant moment in a conversation to what the assistant says, what the user signals, and whether they return.</p></div>
+        <div class="hero-side"><span class="hero-orbit orbit-a"></span><span class="hero-orbit orbit-b"></span><div class="hero-core">M</div><div class="orbit-label label-top">CONTEXT</div><div class="orbit-label label-right">RESPONSE</div><div class="orbit-label label-bottom">LEARNING</div></div>
+      </section>
+      <section class="intro-grid">
+        <div class="intro-card"><div class="eyebrow">THE QUESTION</div><h2>Does memory quality relate to users coming back?</h2><p>We compare people with similar prior activity and similar memory opportunities. This helps separate a memory signal from the simple fact that highly engaged people tend to return.</p></div>
+        <div class="scope-card"><div class="scope-icon">i</div><div><b>How to read this demo</b><p>This is a synthetic model of a ChatGPT-style assistant. It does not measure ChatGPT’s internal memory or real users. In the default scenario, retrieval has <strong>zero simulated effect</strong> on return.</p></div></div>
+      </section>
+      <section class="control-row">
+        <label class="control"><span>SIMULATED ASSUMPTION</span><select id="scenario"><option value="0">No retrieval effect · confounding only</option><option value="0.35">Small positive retrieval effect</option><option value="-0.35">Small negative retrieval effect</option></select></label>
+        <label class="control"><span>MEMORY OPPORTUNITY</span><select id="opportunity"><option value="all">All opportunity types</option></select></label>
+        <div class="seed"><span>Fixed seed</span><b>20261026</b></div>
+        <button class="reset-button" id="reset">Reset view</button>
+      </section>
+      <section class="storyline" aria-label="Assistant memory pathway">
+        <div class="story-step"><span class="step-icon icon-input">01</span><div><b>Opportunity</b><small>A moment where past context may help</small></div></div><span class="story-arrow">→</span>
+        <div class="story-step"><span class="step-icon icon-retrieval">02</span><div><b>Retrieve</b><small>Which memory segment is queried?</small></div></div><span class="story-arrow">→</span>
+        <div class="story-step"><span class="step-icon icon-context">03</span><div><b>Use & respond</b><small>Does useful context reach the answer?</small></div></div><span class="story-arrow">→</span>
+        <div class="story-step"><span class="step-icon icon-user">04</span><div><b>User signal</b><small>Helpful, wrong, or unwanted?</small></div></div><span class="story-arrow">→</span>
+        <div class="story-step"><span class="step-icon icon-return">05</span><div><b>Return</b><small>Does a new session follow?</small></div></div>
+      </section>
+      <section class="section-block" aria-labelledby="snapshot-title"><div class="section-head"><div><div class="eyebrow">COHORT SNAPSHOT</div><h2 id="snapshot-title">Start with the size and shape of the evidence</h2><p>The controls filter the cohort snapshot, example, and return views. Segment cards and the opportunity catalog stay on the full cohort; pending follow-up and unknown telemetry remain visible.</p></div><span class="section-badge">ONE ANCHOR PER USER</span></div><div class="kpi-grid" id="kpis"></div><article class="summary-guide"><div class="summary-guide-title"><span>QUICK READ</span><b>What the snapshot can tell you</b></div><div><b>1 · Exposure</b><p>How often memory was retrieved at an eligible moment.</p></div><div><b>2 · Experience</b><p>Whether retrieved items were relevant, current, and used appropriately.</p></div><div><b>3 · Return</b><p>Whether users came back later. The pattern can reflect prior engagement or other causes, so it is not proof memory caused a return.</p></div></article></section>
+      <section class="section-block" id="pathways"><div class="section-head"><div><div class="eyebrow">01 · MEMORY PATHWAYS</div><h2>Different memory, different job</h2><p>Each card shows the full synthetic cohort, even when an opportunity filter is selected. A user can be eligible for multiple segments.</p></div><span class="section-badge">FULL COHORT · SYNTHETIC</span></div>
+        <div class="segment-grid" id="segments"></div>
+        <div class="plain-note"><span class="note-mark">↳</span><div><b>Working memory is the active workspace.</b><p>Episodic, semantic, and procedural memory are long-term stores. Retrieval brings information from those stores into working memory; it does not mean the assistant used it well.</p></div></div>
+      </section>
+      <section class="section-block" id="opportunities"><div class="section-head"><div><div class="eyebrow">02 · DEFINE THE OPPORTUNITY</div><h2>Decide what could benefit from memory before checking for a pull</h2><p>These example rules are set before retrieval or return is examined. The table shows the full synthetic cohort as a reference catalog.</p></div><span class="section-badge">PRE-DEFINED ELIGIBILITY</span></div><div class="opportunity-table panel" id="opportunity-table"></div></section>
+      <section class="section-block" id="walkthrough"><div class="section-head"><div><div class="eyebrow">03 · ONE SYNTHETIC CASE</div><h2>Walk through a memory journey</h2><p>This example makes the event labels concrete. It illustrates the measurement; it is not evidence about actual users.</p></div><button class="outline-button" id="another-case">Show another example ↻</button></div>
+        <div id="case-card" class="case-card"></div>
+      </section>
+      <section class="section-block" id="experience"><div class="section-head"><div><div class="eyebrow">04 · QUALITY & USER EXPERIENCE</div><h2>A pull is not the same as a good memory moment</h2><p>Review what was returned, whether it reached the response, and what the user explicitly signaled.</p></div><span class="section-badge">SYNTHETIC REVIEW LABELS</span></div>
+        <div class="experience-grid"><article class="panel"><div class="panel-title"><span class="panel-symbol symbol-quality">✓</span><div><h3>Retrieved information</h3><small>Among observed non-empty retrievals</small></div></div><div id="quality-chart"></div><div class="panel-foot">Relevance and correctness are reviewed labels in this simulation. In a real study, publish the rubric and annotation coverage.</div></article>
+          <article class="panel"><div class="panel-title"><span class="panel-symbol symbol-context">↳</span><div><h3>From retrieval to response</h3><small>Was information available and appropriately used?</small></div></div><div id="use-chart"></div><div class="panel-foot">Context inclusion and appropriate use are different steps. A retrieved item may never enter the active response context.</div></article>
+          <article class="panel"><div class="panel-title"><span class="panel-symbol symbol-complaint">!</span><div><h3>Explicit memory complaints</h3><small>Counted in the anchor session, not only among returners</small></div></div><div id="complaint-chart"></div><div class="panel-foot">“No complaint label” is not proof of satisfaction. Unknown telemetry is kept separate from no observed retrieval.</div></article></div>
+        <div class="learning-strip" id="learning-summary"></div>
+      </section>
+      <section class="section-block" id="return"><div class="section-head"><div><div class="eyebrow">05 · SUBSEQUENT USER RETURN</div><h2>Could engaged users have returned anyway?</h2><p>Compare raw return rates, then standardize across prior engagement and opportunity type. Return is an activity measure, not a memory-quality score.</p></div><span class="section-badge">ASSOCIATION ≠ CAUSATION</span></div>
+        <div class="bias-banner"><span class="bias-icon">!</span><div><b>Why the crude comparison can mislead</b><p>Already-active users may be more likely to encounter retrieval and more likely to return. If so, a raw gap gives memory credit for behavior that may have happened anyway.</p></div></div>
+        <div class="return-layout"><article class="panel return-panel"><div class="panel-title"><div><h3>7-day return by retrieval status</h3><small>Only users with known telemetry and complete follow-up</small></div><span class="interval-key">95% intervals shown</span></div><div id="return-chart"></div><div id="gap-summary" class="gap-summary"></div></article><article class="panel activity-panel"><div class="panel-title"><div><h3>The selection pattern</h3><small>Prior activity before the anchor opportunity</small></div></div><div id="activity-chart"></div><div class="panel-foot">If both retrieval and return rise with prior activity, that is a warning that the raw gap is confounded.</div></article></div>
+        <article class="panel curve-panel"><div class="panel-title"><div><h3>How memory frequency relates to user return</h3><small>Full synthetic cohort · opportunity filter does not change this view</small></div><label class="window-control">RETURN WINDOW <select id="retention-window"><option value="7">7 days</option><option value="30">30 days</option></select></label></div><div id="retention-curve"></div></article>
+        <div class="panel table-panel"><div class="panel-title"><div><h3>Keep the denominator in view</h3><small>Counts and rates by observed retrieval state</small></div></div><div class="table-scroll" id="return-table"></div></div>
+        <div class="interpretation-row" id="interpretation"></div>
+      </section>
+      <section class="section-block" id="method"><div class="section-head"><div><div class="eyebrow">06 · METHOD & WHAT NEXT</div><h2>What can this project conclude?</h2><p>It can demonstrate an analysis framework and teach the limits of observational retention comparisons. It cannot establish ChatGPT product findings.</p></div><a class="outline-button doc-button" href="docs/measurement-contract.md">Read the measurement contract ↗</a></div>
+        <div class="concept-grid"><article><div class="concept-num">A</div><h3>Grounding</h3><p>The assistant interacts with the user or another external environment. We measure observable response support and user feedback.</p></article><article><div class="concept-num">B</div><h3>Retrieval</h3><p>The system reads long-term memory into the active workspace. We record segment, result status, relevance, and freshness.</p></article><article><div class="concept-num">C</div><h3>Reasoning</h3><p>The assistant combines current and retrieved information. We evaluate the visible answer; we do not collect private chain-of-thought.</p></article><article><div class="concept-num">D</div><h3>Learning</h3><p>The system writes, updates, or deletes long-term memory. We check correction persistence and forget compliance.</p></article></div>
+        <div class="next-grid"><div><div class="eyebrow">NEXT IN THE RESEARCH</div><h3>From a synthetic demo to credible evidence</h3></div><ol><li>Publish the opportunity rules, event schema, review rubric, and generator assumptions.</li><li>Stress-test missing telemetry, small segment groups, overlapping retrieval, and incomplete follow-up.</li><li>For real product evidence, instrument exact turn-to-memory links and memory writes in a system you are authorized to study.</li><li>For a causal retention claim, design a safe experiment among eligible opportunities and track quality, complaints, privacy, and user control as guardrails.</li></ol></div>
+        <div class="disclosure"><span>ⓘ</span><p><b>Portfolio disclosure:</b> all records and example conversations are synthetic. The site does not connect to ChatGPT, any company system, database, or external data service.</p></div>
+      </section>
+      <footer><span>Memory Pathways <i>·</i> Synthetic research prototype</span><span>Interpret behavior carefully. Optimize for user value, not return alone.</span></footer>
+    </div>
+  </main>
+</body>
+</html>
